@@ -6,10 +6,16 @@
       </div>
     </div>
 
-    <div class="pizzas__listContainer">
+    <div class="pizzas__listContainer pb-5">
       <div class="pizzas__list">
-        
+        <div class="row gx-4 gy-2">
+          <div class="col-sm-6 col-md-4" *ngFor="let pizza of pizzas">
+            <app-pizza-card [pizza-data]="pizza"></app-pizza-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- <app-cart-preview></app-cart-preview> -->

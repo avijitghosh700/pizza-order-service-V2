@@ -1,0 +1,21 @@
+<figure class="pizza-card shadow">
+  <div class="pizza-card__thumb">
+    <img [src]="pizza?.image" alt="">
+  </div>
+  <figcaption class="pizza-card__caption">
+    <h3 class="heading heading__tertiary mb-2">{{pizza?.name}}</h3>
+    <div class="pizza-card__priceContainer">
+      <div class="row gx-0">
+        <div class="col-6">
+          <ng-container [ngSwitch]="pizza?.currency">
+            <h4 class="fs fs__base" *ngSwitchCase="currency['inr']">₹{{ pizza?.price }}</h4>
+            <h4 class="fs fs__base" *ngSwitchCase="currency['usd']">${{ pizza?.price }}</h4>
+          </ng-container>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+    </div>
+  </figcaption>
+</figure>

@@ -2,6 +2,20 @@
 @import './variables';
 @import './mixins';
 
+*:not(html, body) {
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 100px;
+    background-color: $gray-l;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 100px;
+    background-color: $gray;
+  }
+}
+
 // Colors
 @each $name, $value in $colors {
   .color-#{$name} {
@@ -34,6 +48,43 @@
     height: 100%;
     object-fit: contain;
   }
+}
+// END
+
+// Typography
+.heading {
+  margin: 0;
+
+  &__primary {
+    font: {
+      size: 30px;
+      weight: 600;
+    }
+  }
+
+  &__secondary {
+    font: {
+      size: 25px;
+      weight: 600;
+    }
+  }
+  
+  &__tertiary {
+    font: {
+      size: 20px;
+      weight: 600;
+    }
+  }
+}
+
+.fs {
+  margin: 0;
+
+  &__lg { font-size: 40px; }
+  &__md { font-size: 18px; }
+  &__base { font-size: 16px; }
+  &__sm { font-size: 13px; }
+  &__xsm { font-size: 11px; }
 }
 // END
 

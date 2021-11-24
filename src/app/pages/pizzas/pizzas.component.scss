@@ -28,8 +28,7 @@
 
   &__list {
     padding: 20px;
-    max-height: 800px;
-    overflow-y: auto;
+    min-height: 500px;
     background-color: #fff;
     border-radius: 15px;
   }

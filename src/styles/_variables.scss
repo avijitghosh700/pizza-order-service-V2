@@ -1,10 +1,14 @@
 $dark: #0C0C0C;
+$gray: #727272;
+$gray-l: #cfcfcf;
 $crimson: #E42434;
 
 // Color Map
 $colors: (
-  'crimson': $crimson, 
+  'crimson': $crimson,
   'dark': $dark,
+  'gray': $gray,
+  'gray-l': $gray-l,
 );
 // END
 
