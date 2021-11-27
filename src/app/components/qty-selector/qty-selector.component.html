@@ -1,0 +1,18 @@
+<div class="qty-selector">
+  <button class="btn qty-selector-action qty-selector-action__add" 
+    *ngIf="!pizza?.orders"
+    (click)="increment()">
+    <i class="bi bi-plus ion-2x me-1"></i> Add
+  </button>
+
+  <div class="btn-group qty-selector__group" *ngIf="pizza?.orders">
+    <button class="btn qty-selector-action qty-selector-action__decrease" (click)="decrement()">
+      <i class="bi bi-dash ion-2x"></i>
+    </button>
+    <input type="text" class="form-control qty-selector__value" [value]="pizza?.orders" readonly>
+    <button class="btn qty-selector-action qty-selector-action__increase" (click)="increment()">
+      <i class="bi bi-plus ion-2x"></i>
+    </button>
+  </div>
+</div>
+

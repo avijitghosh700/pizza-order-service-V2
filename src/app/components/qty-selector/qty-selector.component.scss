@@ -1,0 +1,43 @@
+@import "/src/styles/variables";
+@import "/src/styles/mixins";
+
+.qty-selector {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid $dark;
+  overflow: hidden;
+  min-width: 100px;
+
+  &__group {
+    & > * {
+      width: calc(100% / 3);
+    }
+  }
+
+  &__value {
+    padding: 0;
+    height: auto;
+    min-width: 30px;
+    background-color: unset;
+    border-radius: 0;
+    border: none;
+    border: {
+      left: 1px solid $dark;
+      right: 1px solid $dark;
+    }
+    cursor: default;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.qty-selector-action {
+  @include flexAlign(center, center);
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+}

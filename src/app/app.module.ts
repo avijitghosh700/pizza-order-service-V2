@@ -7,18 +7,26 @@ import { AppComponent } from './app.component';
 import { PizzasComponent } from './pages/pizzas/pizzas.component';
 import { PizzaCardComponent } from './components/pizza-card/pizza-card.component';
 import { CartPreviewComponent } from './components/cart-preview/cart-preview.component';
+import { QtySelectorComponent } from './components/qty-selector/qty-selector.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { reducers, metaReducers } from './store/reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
     PizzasComponent,
     PizzaCardComponent,
-    CartPreviewComponent
+    CartPreviewComponent,
+    QtySelectorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]

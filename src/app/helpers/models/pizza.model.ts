@@ -7,3 +7,8 @@ export interface Pizza {
   stock: number;
   currency: string;
 }
+
+export interface Cart {
+  totalOrders: number;
+  items: Pizza[];
+}
