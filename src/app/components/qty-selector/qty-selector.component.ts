@@ -35,7 +35,7 @@ export class QtySelectorComponent implements OnInit, OnChanges {
         if (res && Object.keys(res).length) {
           const pizza = res.items.find((item) => item.id === this.pizza?.id);
 
-          if (!pizza) this.pizza = null;
+          if (!pizza) this.pizza = null; // there is a bug here, after null set trying to add again will cause error.
         }
       }
     });
