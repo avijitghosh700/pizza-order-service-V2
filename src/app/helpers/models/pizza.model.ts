@@ -15,5 +15,6 @@ export interface Orders {
 
 export interface Cart {
   totalOrders: number;
+  records: Pizza[];
   items: Pizza[];
 }

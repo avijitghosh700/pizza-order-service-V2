@@ -28,6 +28,7 @@ export const initialPizzaState: PizzaState = {
 
 export const initialCartState: Cart = {
   totalOrders: 0,
+  records: [],
   items: [],
 };
 // END
@@ -95,6 +96,7 @@ export const cartReducer = createReducer(
         clonedStateItemOrder.price += clonedStateItem.price;
         
         return {
+          records: [...clonedState],
           items: [...clonedState],
           totalOrders: state.totalOrders + 1,
         }
@@ -102,6 +104,7 @@ export const cartReducer = createReducer(
         clonedStateItemOrder.count = clonedStateItem.stock;
         
         return {
+          records: [...clonedState],
           items: [...clonedState],
           totalOrders: state.totalOrders,
         }
@@ -111,6 +114,7 @@ export const cartReducer = createReducer(
     clonedPayload.orders.count = 1;
     clonedPayload.orders.price = clonedPayload.price;
     return {
+      records: [...state.items, clonedPayload],
       items: [...state.items, clonedPayload],
       totalOrders: state.totalOrders + 1,
     }
@@ -127,19 +131,22 @@ export const cartReducer = createReducer(
 
       if (clonedStateItemOrder.count >= 1) {
         return {
-          items: [...clonedState],
+          records: [...clonedState],
+          items: [...clonedState.filter((item) => item?.orders?.count > 0)],
           totalOrders: state.totalOrders - 1,
         };
       }
 
       return {
-        items: [...clonedState.filter((item) => item.id !== action.payload.id)],
+        records: [...clonedState],
+        items: [...clonedState.filter((item) => item?.orders?.count > 0)],
         totalOrders: (state.totalOrders > 0) ? (state.totalOrders - 1) : 0,
       }
     }
 
     return {
-      items: [...clonedState],
+      records: [...clonedState],
+      items: [...clonedState.filter((item) => item?.orders?.count > 0)],
       totalOrders: state.totalOrders,
     }
   })

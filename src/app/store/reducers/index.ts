@@ -21,7 +21,7 @@ export const selectPizza = (props: any) => (
 export const selectCartPizza = (props: any) => (
   createSelector(
     selectCart,
-    (state: Cart) => state.items.find((pizza) => pizza.id === props.id)
+    (state: Cart) => state.records.find((pizza) => pizza.id === props.id)
   )
 );
 // END //

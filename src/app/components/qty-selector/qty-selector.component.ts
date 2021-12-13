@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Pizza } from 'src/app/helpers';
 import { addToCart, removeFromCart, State } from 'src/app/store';
-import * as fromReduders from 'src/app/store/reducers';
 
 @Component({
   selector: 'app-qty-selector',
@@ -12,7 +11,7 @@ import * as fromReduders from 'src/app/store/reducers';
 export class QtySelectorComponent implements OnInit, OnChanges {
   @Input('pizza') pizza: Pizza | null = null;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 
   ngOnChanges() {
   }
@@ -26,19 +25,5 @@ export class QtySelectorComponent implements OnInit, OnChanges {
 
   decrement() {
     this.store.dispatch(removeFromCart({ payload: <Pizza>this.pizza }));
-    this.getCartItemState();
   }
-
-  getCartItemState() {
-    this.store.select(fromReduders.selectCart).subscribe({
-      next: (res) => {
-        if (res && Object.keys(res).length) {
-          const pizza = res.items.find((item) => item.id === this.pizza?.id);
-
-          if (!pizza) this.pizza = null; // there is a bug here, after null set trying to add again will cause error.
-        }
-      }
-    });
-  }
-
 }
