@@ -114,14 +114,14 @@ export const cartReducer = createReducer(
     clonedPayload.orders.count = 1;
     clonedPayload.orders.price = clonedPayload.price;
     return {
-      records: [...state.items, clonedPayload],
+      records: [...state.items, clonedPayload], // To re-establish records property's value after cart is cleared once.
       items: [...state.items, clonedPayload],
       totalOrders: state.totalOrders + 1,
     }
   }),
   on(removeFromCart, (state, action) => {
-    const filteredIndex = state.items.findIndex(item => item.id === action.payload.id);
-    const clonedState = <Pizza[]>deepCopy(state.items);
+    const filteredIndex = state.records.findIndex(item => item.id === action.payload.id);
+    const clonedState = <Pizza[]>deepCopy(state.records);
 
     if (filteredIndex > -1) {
       const clonedStateItem = clonedState[filteredIndex];
