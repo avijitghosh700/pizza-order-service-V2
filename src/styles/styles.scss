@@ -1,19 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import '~node_modules/bootstrap/scss/bootstrap';
 @import '~node_modules/bootstrap-icons/font/bootstrap-icons';
 @import './variables';
 @import './mixins';
 
-*:not(html, body) {
-  &::-webkit-scrollbar {
-    width: 10px;
-    border-radius: 100px;
-    background-color: $gray-l;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    width: 10px;
-    border-radius: 100px;
-    background-color: $gray;
+* {
+  font-family: 'Lato', sans-serif;
+
+  &:not(html, body) {
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 100px;
+      background-color: $gray-l;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      width: 10px;
+      border-radius: 100px;
+      background-color: $gray;
+    }
   }
 }
 
@@ -36,6 +41,8 @@
 
 // Icons
 .icons {
+  transition: all .2s ease-in-out;
+
   @each $name, $value in $icons {
     &.icon-#{$name} {
       width: $value !important;
@@ -54,6 +61,7 @@
 @each $name, $value in $icons {
   .ion-#{$name} {
     font-size: $value !important;
+    transition: all .2s ease-in-out;
   }
 }
 // END
@@ -93,12 +101,26 @@
   &__sm { font-size: 13px; }
   &__xsm { font-size: 11px; }
 }
+
+@each $name, $value in $weights {
+  .fw-#{$name} {
+    font-weight: $value !important;
+  }
+}
 // END
 
 // Buttons
 .btn {
   &:focus {
     box-shadow: none !important;
+  }
+
+  &__action {
+    @include flexAlign(center, center, row, inline-flex);
+    border: 1px solid $gray;
+    padding: 0;
+    height: 35px;
+    min-width: 35px;
   }
 }
 // END

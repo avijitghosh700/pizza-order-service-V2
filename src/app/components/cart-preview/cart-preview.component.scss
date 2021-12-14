@@ -2,6 +2,7 @@
 @import '/src/styles/mixins';
 
 .cart-preview {
+  @include flexAlign(center, space-between);
   position: fixed;
   bottom: -100%;
   left: 50%;
@@ -12,8 +13,68 @@
   background-color: #fff;
   border-radius: 10px;
   transition: all .2s ease-in-out;
+  z-index: 100;
 
   &.active {
     bottom: 30px;
   }
 }
+
+.cart-preview-products {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+  width: 100%;
+  height: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  z-index: -1;
+
+  &.active {
+    height: 200px;
+  }
+
+  &__head {
+    position: relative;
+    @include flexAlign(center, space-between);
+    padding: 15px 20px;
+    border-bottom: 1px solid $gray;
+  }
+
+  &__body {
+    width: 100%;
+    max-height: calc(100% - 55px);
+    padding: 15px 20px;
+    overflow: auto;
+  }
+
+  &__item {
+    @include flexAlign(center, space-between);
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__productPriceDetails {
+    max-width: 120px;
+  }
+}
+
+.close {
+  @include flexAlign(center, center);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 30px;
+  padding: 0;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+

@@ -14,9 +14,19 @@ $colors: (
 
 // Icon Map
 $icons: (
+  'sm': 18px,
   'lg': 20px,
   '2x': 25px,
   '3x': 30px,
   '4x': 35px,
   '5x': 40px,
+);
+
+// Font-weight Map
+$weights: (
+  '300': 300,
+  '400': 400,
+  '500': 500,
+  '600': 600,
+  '700': 700,
 );
