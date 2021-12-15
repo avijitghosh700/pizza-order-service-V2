@@ -33,8 +33,6 @@ export class CartPreviewComponent implements OnInit {
           if (!this.cartItems.length) this.isCartExpanded = false;
           
           this.subtotal = this.cartItems.reduce((acc, curr) => (acc += curr.orders.price), 0);
-          console.log(this.subtotal);
-
         }
       }
     });

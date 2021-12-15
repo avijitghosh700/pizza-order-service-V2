@@ -1,6 +1,6 @@
 <div class="cart-preview shadow"
   [class.active]="cartItems.length">
-  <div class="cart-preview__orders fw-500">
+  <div class="cart-preview__orders fw-600">
     <button class="btn btn__action me-2" (click)="toggleCart()">
       <ion-icon name="caret-up" 
         class="ion-sm" 
@@ -9,15 +9,15 @@
     </button>
     Your Order ({{ cart?.totalOrders }})
   </div>
-  <div class="cart-preview__subtotal fw-500">
+  <div class="cart-preview__subtotal fw-600">
     Subtotal: {{ subtotal | currency:'INR'}}
   </div>
   
-  <div class="cart-preview-products" 
+  <div class="cart-preview-products shadow" 
     [class.active]="isCartExpanded" 
     *ngIf="cartItems.length">
     <div class="cart-preview-products__head">
-      <h4 class="heading heading__tertiary">Your Order</h4>
+      <h4 class="heading heading__tertiary">Your Orders</h4>
       <button class="btn close" (click)="collapseCart()">
         <!-- <i class="bi bi-x-lg"></i> -->
         <ion-icon name="close-outline" class="ion-2x"></ion-icon>
@@ -27,9 +27,15 @@
       <ul class="list-unstyled cart-preview-products__list m-0">
         <li class="cart-preview-products__item" *ngFor="let item of cartItems">
           <div class="cart-preview-products__productDetails">
-            {{ item.name }}
+            <div class="cart-preview-products__thumb me-2">
+              <img [src]="item?.image || '/assets/images/not-found.png'" alt="">
+            </div>
+            <h4 class="fs fs__md fw-600">
+              {{ item?.name }}
+            </h4>
           </div>
           <div class="cart-preview-products__productPriceDetails">
+            <span class="fs fs__sm fw-300">{{ item?.orders?.price | currency:'INR' }}</span>
             <app-qty-selector [pizza]="item"></app-qty-selector>
           </div>
         </li>
