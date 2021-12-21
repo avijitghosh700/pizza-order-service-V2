@@ -12,6 +12,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { PizzaEffect } from './store/effects';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { reducers, metaReducers } from './store/reducers';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([PizzaEffect]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],

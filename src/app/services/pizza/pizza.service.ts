@@ -8,7 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 export class PizzaService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(
+    private _http: HttpClient,
+  ) { }
 
   getPizzas(): Observable<Record<string, any>> {
     return this._http.get(`${environment.api}/pizza.json`)
