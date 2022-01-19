@@ -14,7 +14,7 @@ import * as fromReduders from 'src/app/store/reducers';
 export class PizzasComponent implements OnInit {
   public state: State | null = null;
   public pizzaState: PizzaState | null = null;
-  public pizzas: Observable<Pizza[]> = this.store.select(fromReduders.selectPizzas);
+  public $pizzas: Observable<Pizza[]> = this.store.select(fromReduders.selectPizzas);
 
   constructor(public store: Store<State>) { }
 
