@@ -40,7 +40,6 @@ export const initialState: State = {
 };
 // END
 
-// Reducers
 export const deepCopy = (inObject: any) => {
   let outObject: any, value, key;
 
@@ -61,6 +60,7 @@ export const deepCopy = (inObject: any) => {
   return outObject
 }
 
+// Reducers
 export const pizzaReducer = createReducer(
   initialPizzaState,
   on(loadPizzas, (state) => ({

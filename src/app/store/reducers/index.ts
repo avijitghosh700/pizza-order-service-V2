@@ -1,9 +1,8 @@
 import { ActionReducerMap, MetaReducer, createSelector } from "@ngrx/store";
 import * as fromReducer from "./pizza.reducers";
-import { environment } from "src/environments/environment";
 import { State } from "./pizza.reducers";
-import { PizzaState } from "..";
 import { Cart } from "src/app/helpers";
+import { environment } from "src/environments/environment";
 
 // Selectors //
 export const selectStore = (state: State) => state;
