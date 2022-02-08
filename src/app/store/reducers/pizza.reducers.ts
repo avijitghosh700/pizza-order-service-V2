@@ -5,6 +5,7 @@ import {
   loadPizzasFailure,
   loadPizzasSuccess,
   removeFromCart,
+  clearCart
 } from '../actions';
 import { Pizza, Cart } from '../../helpers';
 
@@ -149,6 +150,11 @@ export const cartReducer = createReducer(
       items: [...clonedState.filter((item) => item?.orders?.count > 0)],
       totalOrders: state.totalOrders,
     }
-  })
+  }),
+  on(clearCart, (state) => ({
+    ...state,
+    records: [],
+    items: [],
+  })),
 );
 // END

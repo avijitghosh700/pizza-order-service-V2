@@ -9,8 +9,15 @@
     </button>
     Your Order ({{ cart?.totalOrders }})
   </div>
-  <div class="cart-preview__subtotal fw-600">
+  <div class="cart-preview__subtotal fw-600 ms-auto">
     Subtotal: {{ subtotal | currency:'INR'}}
+  </div>
+  <div class="cart-preview__checkout fw-600" *ngIf="cartItems.length">
+    <button class="btn btn__action blue ms-3" (click)="checkout()">
+      <ion-icon name="cart-outline" 
+        class="ion-sm">
+      </ion-icon>
+    </button>
   </div>
   
   <div class="cart-preview-products shadow" 

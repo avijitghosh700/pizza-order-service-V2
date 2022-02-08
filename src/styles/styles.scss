@@ -115,16 +115,36 @@
     box-shadow: none !important;
   }
 
+  &__primary {
+    @include flexAlign(center, center, row, inline-flex);
+    height: 40px;
+    min-width: 100px;
+    padding: 0;
+    background-color: $dark;
+    color: #fff !important;
+    font: {
+      size: 15px;
+      weight: 500;
+    }
+  }
+
   &__action {
     @include flexAlign(center, center, row, inline-flex);
     border: 1px solid $gray;
     padding: 0;
     height: 35px;
     min-width: 35px;
+
+    &.blue {
+      border: 1px solid $blue;
+      background-color: $blue;
+      color: #fff;
+    }
   }
 }
 // END
 
 main.main {
   min-height: 100vh;
+  background-color: #000;
 }

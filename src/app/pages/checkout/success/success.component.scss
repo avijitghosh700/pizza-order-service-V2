@@ -1,0 +1,40 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.checkout-success {
+  min-height: 100vh;
+
+  &__miniHeader {
+    background-color: #fff;
+  }
+
+  &__listContainer {
+    max-width: 960px;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+  }
+
+  &__list {
+    @include flexAlign(center, center);
+    padding: 20px;
+    min-height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+
+  &__successBox {
+    text-align: center;
+  }
+
+  &__success {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+    & > img,
+    & > svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,9 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Pizza } from 'src/app/helpers';
 
-export const loadPizzas = createAction(
-  '[Pizza] Load Pizzas'
-);
+export const loadPizzas = createAction('[Pizza] Load Pizzas');
 
 export const loadPizzasSuccess = createAction(
   '[Pizza] Load Pizzas Success',
@@ -24,3 +22,5 @@ export const removeFromCart = createAction(
   '[Cart] Remove From Cart',
   props<{ payload: Pizza }>()
 );
+
+export const clearCart = createAction('[Cart] Clear Cart');

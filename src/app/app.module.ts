@@ -21,7 +21,7 @@ import { PizzaEffect } from './store/effects';
     PizzasComponent,
     PizzaCardComponent,
     CartPreviewComponent,
-    QtySelectorComponent
+    QtySelectorComponent,
   ],
   imports: [
     BrowserModule,

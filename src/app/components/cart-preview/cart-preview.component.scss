@@ -2,7 +2,7 @@
 @import '/src/styles/mixins';
 
 .cart-preview {
-  @include flexAlign(center, space-between);
+  @include flexAlign(center, null);
   position: fixed;
   bottom: -100%;
   left: 50%;

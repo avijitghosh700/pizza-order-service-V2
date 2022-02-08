@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Cart, Pizza } from 'src/app/helpers';
 import { State } from 'src/app/store';
@@ -17,6 +18,7 @@ export class CartPreviewComponent implements OnInit {
 
   constructor(
     public store: Store<State>,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -48,5 +50,9 @@ export class CartPreviewComponent implements OnInit {
 
   collapseCart() {
     this.isCartExpanded = false;
+  }
+
+  checkout() {
+    this.router.navigateByUrl('/checkout');
   }
 }

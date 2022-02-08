@@ -1,0 +1,96 @@
+<section class="checkout-main">
+  <div class="container-fluid">
+    <div class="checkout-main__listContainer">      
+      <div class="checkout-main__list">
+        <div class="checkout-main__miniHeader mb-2">
+          <a class="btn btn__action" routerLink="/" title="Home">
+            <ion-icon name="arrow-back-outline" class="ion-sm"></ion-icon>
+          </a>
+        </div>
+
+        <div class="row gx-4 gy-2">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#Id</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of (cartItems$ | async) || []">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.orders?.count }} x {{ item.price }}</td>
+                    <td>{{ item.orders?.price }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="col-sm-6">
+            <div class="checkout-main__payment-method-head mb-3">
+              <h3 class="heading heading__tertiary">Select payment method</h3>
+            </div>
+
+            <div class="checkout-main__payment-method-body">
+              <ul class="list-unstyled checkout-main__payment-method-list">
+                <li class="checkout-main__payment-method-item" *ngFor="let method of methods">
+                  <label class="checkout-main__payment-method" for="method-{{ method.id }}">
+                    <input type="radio" 
+                      name="payment_method" 
+                      class="checkout-main__radio"
+                      id="method-{{ method.id }}"
+                      (change)="openStripeModal(method)">
+                    <span class="checkout-main__radio-mark me-2"></span>
+                    <span class="checkout-main__title">{{ method.title }}</span>
+                  </label>
+                </li>
+              </ul>
+
+              <button class="btn btn__primary w-100" 
+                type="button"
+                *ngIf="isCOD"
+                (click)="checkoutCOD()">
+                Pay {{ (cartTotal$ | async) || 0 | currency: 'INR' }}
+              </button>
+            </div>
+          </div>
+          
+          <div class="col-sm-6">
+            <div class="checkout-main__cart-summary-head mb-3">
+              <h3 class="heading heading__tertiary">Cart summary</h3>
+            </div>
+            
+            <div class="checkout-main__cart-summary-body">
+              <div class="table-responsive">
+                <table class="table table-bordered m-0">
+                  <tbody>
+                    <tr>
+                      <td>Subtotal</td>
+                      <td>{{ (cartTotal$ | async) || 0 | currency: 'INR' }}</td>
+                    </tr>
+                    <tr>
+                      <td>Shipping</td>
+                      <td> {{ 0 | currency: 'INR' }} </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Total</th>
+                      <th class="text-end"> {{ (cartTotal$ | async) || 0 | currency: 'INR' }} </th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

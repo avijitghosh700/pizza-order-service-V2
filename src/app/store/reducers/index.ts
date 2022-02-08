@@ -8,6 +8,8 @@ import { environment } from "src/environments/environment";
 export const selectStore = (state: State) => state;
 export const selectPizzas = (state: State) => state.pizzas.data;
 export const selectCart = (state: State) => state.cart;
+export const selectCartItems = (state: State) => state.cart.items;
+export const selectCartTotal = (state: State) => state.cart.items.reduce((prev, curr) => (prev += curr.orders.price), 0);
 
 // To pass props in a selector
 export const selectPizza = (props: any) => (
