@@ -155,6 +155,7 @@ export const cartReducer = createReducer(
     ...state,
     records: [],
     items: [],
+    totalOrders: 0,
   })),
 );
 // END

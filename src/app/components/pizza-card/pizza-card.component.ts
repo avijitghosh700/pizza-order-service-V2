@@ -24,12 +24,13 @@ export class PizzaCardComponent implements OnInit {
   }
 
   getCartItemState() {
-    this.store.select(fromReduders.selectCartPizza(this.pizza)).subscribe({
-      next: (res) => {
-        if (res && Object.keys(res).length) {
-          this.pizza = res;
+    this.store.select(fromReduders.selectCartPizza(this.pizza))
+      .subscribe({
+        next: (res) => {
+          if (res && Object.keys(res).length) {
+            this.pizza = res;
+          }
         }
-      }
-    });
+      });
   }
 }

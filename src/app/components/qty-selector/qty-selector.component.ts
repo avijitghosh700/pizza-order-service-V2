@@ -8,16 +8,10 @@ import { addToCart, removeFromCart, State } from 'src/app/store';
   templateUrl: './qty-selector.component.html',
   styleUrls: ['./qty-selector.component.scss']
 })
-export class QtySelectorComponent implements OnInit, OnChanges {
+export class QtySelectorComponent {
   @Input('pizza') pizza: Pizza | null = null;
 
   constructor(private store: Store<State>) {}
-
-  ngOnChanges() {
-  }
-
-  ngOnInit(): void {
-  }
 
   increment() {
     this.store.dispatch(addToCart({ payload: <Pizza>this.pizza }));
