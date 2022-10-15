@@ -1,1 +1,1 @@
-Pizza order service in angular (Version 2). For state management (ngRx) learning purpose.
+Pizza order service (Version 2) in Angular + NgRx
