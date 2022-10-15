@@ -5,7 +5,7 @@ import {
   loadPizzasFailure,
   loadPizzasSuccess,
   removeFromCart,
-  clearCart
+  clearCart,
 } from '../actions';
 import { Pizza, Cart } from '../../helpers';
 
@@ -44,22 +44,22 @@ export const initialState: State = {
 export const deepCopy = (inObject: any) => {
   let outObject: any, value, key;
 
-  if (typeof inObject !== "object" || inObject === null) {
-    return inObject // Return the value if inObject is not an object
+  if (typeof inObject !== 'object' || inObject === null) {
+    return inObject; // Return the value if inObject is not an object
   }
 
   // Create an array or object to hold the values
-  outObject = Array.isArray(inObject) ? [] : {}
+  outObject = Array.isArray(inObject) ? [] : {};
 
   for (key in inObject) {
-    value = inObject[key]
+    value = inObject[key];
 
     // Recursively (deep) copy for nested objects, including arrays
-    outObject[key] = deepCopy(value)
+    outObject[key] = deepCopy(value);
   }
 
-  return outObject
-}
+  return outObject;
+};
 
 // Reducers
 export const pizzaReducer = createReducer(
@@ -83,11 +83,13 @@ export const pizzaReducer = createReducer(
 export const cartReducer = createReducer(
   initialCartState,
   on(addToCart, (state, action) => {
-    const filteredIndex = state.items.findIndex(item => item.id === action.payload.id);
+    const filteredIndex = state.items.findIndex(
+      (item) => item.id === action.payload.id
+    );
     const clonedState = <Pizza[]>deepCopy(state.items);
     const clonedPayload = <Pizza>deepCopy(action.payload);
     // const clonedState = <Pizza[]>JSON.parse(JSON.stringify(state.items)); // JSON method to deep clone but symbols, DOM nodeList will not be cloned
-    
+
     if (filteredIndex > -1) {
       const clonedStateItem = clonedState[filteredIndex];
       const clonedStateItemOrder = clonedStateItem.orders;
@@ -95,20 +97,20 @@ export const cartReducer = createReducer(
       if (clonedStateItemOrder.count < clonedStateItem.stock) {
         clonedStateItemOrder.count = clonedStateItemOrder.count + 1;
         clonedStateItemOrder.price += clonedStateItem.price;
-        
+
         return {
           records: [...clonedState],
           items: [...clonedState],
           totalOrders: state.totalOrders + 1,
-        }
+        };
       } else {
         clonedStateItemOrder.count = clonedStateItem.stock;
-        
+
         return {
           records: [...clonedState],
           items: [...clonedState],
           totalOrders: state.totalOrders,
-        }
+        };
       }
     }
 
@@ -118,10 +120,12 @@ export const cartReducer = createReducer(
       records: [...state.items, clonedPayload], // To re-establish records property's value after cart is cleared once.
       items: [...state.items, clonedPayload],
       totalOrders: state.totalOrders + 1,
-    }
+    };
   }),
   on(removeFromCart, (state, action) => {
-    const filteredIndex = state.records.findIndex(item => item.id === action.payload.id);
+    const filteredIndex = state.records.findIndex(
+      (item) => item.id === action.payload.id
+    );
     const clonedState = <Pizza[]>deepCopy(state.records);
 
     if (filteredIndex > -1) {
@@ -141,21 +145,21 @@ export const cartReducer = createReducer(
       return {
         records: [...clonedState],
         items: [...clonedState.filter((item) => item?.orders?.count > 0)],
-        totalOrders: (state.totalOrders > 0) ? (state.totalOrders - 1) : 0,
-      }
+        totalOrders: state.totalOrders > 0 ? state.totalOrders - 1 : 0,
+      };
     }
 
     return {
       records: [...clonedState],
       items: [...clonedState.filter((item) => item?.orders?.count > 0)],
       totalOrders: state.totalOrders,
-    }
+    };
   }),
   on(clearCart, (state) => ({
     ...state,
     records: [],
     items: [],
     totalOrders: 0,
-  })),
+  }))
 );
 // END

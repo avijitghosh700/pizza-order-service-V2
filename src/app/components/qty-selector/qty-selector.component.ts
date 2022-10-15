@@ -6,7 +6,7 @@ import { addToCart, removeFromCart, State } from 'src/app/store';
 @Component({
   selector: 'app-qty-selector',
   templateUrl: './qty-selector.component.html',
-  styleUrls: ['./qty-selector.component.scss']
+  styleUrls: ['./qty-selector.component.scss'],
 })
 export class QtySelectorComponent {
   @Input('pizza') pizza: Pizza | null = null;
