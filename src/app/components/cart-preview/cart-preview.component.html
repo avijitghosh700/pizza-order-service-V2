@@ -34,10 +34,10 @@
       <ul class="list-unstyled cart-preview-products__list m-0">
         <li class="cart-preview-products__item" *ngFor="let item of cartItems">
           <div class="cart-preview-products__productDetails">
-            <div class="cart-preview-products__thumb me-2">
+            <div class="cart-preview-products__thumb shadow-sm me-2">
               <img [src]="item?.image || '/assets/images/not-found.png'" alt="">
             </div>
-            <h4 class="fs fs__md fw-600">
+            <h4 class="fs fs__sm fw-600">
               {{ item?.name }}
             </h4>
           </div>
