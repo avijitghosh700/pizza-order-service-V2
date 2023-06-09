@@ -41,25 +41,26 @@ export const initialState: State = {
 };
 // END
 
-export const deepCopy = (inObject: any) => {
-  let outObject: any, value, key;
+// For reference only
+// export const deepCopy = (inObject: any) => {
+//   let outObject: any, value, key;
 
-  if (typeof inObject !== 'object' || inObject === null) {
-    return inObject; // Return the value if inObject is not an object
-  }
+//   if (typeof inObject !== 'object' || inObject === null) {
+//     return inObject; // Return the value if inObject is not an object
+//   }
 
-  // Create an array or object to hold the values
-  outObject = Array.isArray(inObject) ? [] : {};
+//   // Create an array or object to hold the values
+//   outObject = Array.isArray(inObject) ? [] : {};
 
-  for (key in inObject) {
-    value = inObject[key];
+//   for (key in inObject) {
+//     value = inObject[key];
 
-    // Recursively (deep) copy for nested objects, including arrays
-    outObject[key] = deepCopy(value);
-  }
+//     // Recursively (deep) copy for nested objects, including arrays
+//     outObject[key] = deepCopy(value);
+//   }
 
-  return outObject;
-};
+//   return outObject;
+// };
 
 // Reducers
 export const pizzaReducer = createReducer(
@@ -86,8 +87,8 @@ export const cartReducer = createReducer(
     const filteredIndex = state.items.findIndex(
       (item) => item.id === action.payload.id
     );
-    const clonedState = <Pizza[]>deepCopy(state.items);
-    const clonedPayload = <Pizza>deepCopy(action.payload);
+    const clonedState = <Pizza[]>structuredClone(state.items);
+    const clonedPayload = <Pizza>structuredClone(action.payload);
     // const clonedState = <Pizza[]>JSON.parse(JSON.stringify(state.items)); // JSON method to deep clone but symbols, DOM nodeList will not be cloned
 
     if (filteredIndex > -1) {
@@ -126,7 +127,7 @@ export const cartReducer = createReducer(
     const filteredIndex = state.records.findIndex(
       (item) => item.id === action.payload.id
     );
-    const clonedState = <Pizza[]>deepCopy(state.records);
+    const clonedState = <Pizza[]>structuredClone(state.records);
 
     if (filteredIndex > -1) {
       const clonedStateItem = clonedState[filteredIndex];
