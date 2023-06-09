@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { PizzasComponent } from './pages/pizzas/pizzas.component';
 import { CheckoutGuard } from './shared/guards/checkout.guard';
 
-const routes: Routes = [
+const routes: Route[] = [
   {
     path: '',
     component: PizzasComponent,
