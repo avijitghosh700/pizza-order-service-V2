@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { State } from 'src/app/store';
@@ -8,7 +8,7 @@ import * as fromReducers from 'src/app/store/reducers';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckoutGuard implements CanActivate {
+export class CheckoutGuard  {
   constructor(
     private store: Store<State>,
     private router: Router,
