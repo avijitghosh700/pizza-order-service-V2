@@ -1,3 +1,3 @@
-export interface ICurrency {
+export interface CurrencyModel {
   [x: string]: string;
 }

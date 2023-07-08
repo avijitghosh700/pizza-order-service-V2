@@ -2,9 +2,11 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
-import { Pizza } from 'src/app/helpers';
-import { clearCart, State } from 'src/app/store';
+
+import { clearCart } from 'src/app/store';
 import * as fromReducer from 'src/app/store/reducers';
+
+import { Pizza, State } from 'src/app/helpers';
 
 declare const StripeCheckout: StripeCheckoutStatic;
 

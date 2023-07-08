@@ -18,3 +18,14 @@ export interface Cart {
   records: Pizza[];
   items: Pizza[];
 }
+
+export interface PizzaState {
+  data: Pizza[];
+  loading: boolean;
+  loaded: boolean;
+}
+
+export interface State {
+  pizzas: PizzaState;
+  cart: Cart;
+}

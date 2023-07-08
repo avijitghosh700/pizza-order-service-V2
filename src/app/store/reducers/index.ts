@@ -1,7 +1,6 @@
 import { ActionReducerMap, MetaReducer, createSelector } from "@ngrx/store";
 import * as fromReducer from "./pizza.reducers";
-import { State } from "./pizza.reducers";
-import { Cart } from "src/app/helpers";
+import { Cart, State } from "src/app/helpers";
 import { environment } from "src/environments/environment";
 
 // Selectors //
@@ -27,9 +26,9 @@ export const selectCartPizza = (props: any) => (
 );
 // END //
 
-export const reducers: ActionReducerMap<fromReducer.State> = {
+export const reducers: ActionReducerMap<State> = {
   pizzas: fromReducer.pizzaReducer,
   cart: fromReducer.cartReducer,
 };
 
-export const metaReducers: MetaReducer<fromReducer.State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

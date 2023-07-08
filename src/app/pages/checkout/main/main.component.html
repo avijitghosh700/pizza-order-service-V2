@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of (cartItems$ | async) || []">
+                  <tr *ngFor="let item of (cartItems$ | async)">
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.orders.count }} x {{ item.price }}</td>

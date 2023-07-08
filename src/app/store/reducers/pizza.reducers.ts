@@ -7,18 +7,7 @@ import {
   removeFromCart,
   clearCart,
 } from '../actions';
-import { Pizza, Cart } from '../../helpers';
-
-export interface PizzaState {
-  data: Pizza[];
-  loading: boolean;
-  loaded: boolean;
-}
-
-export interface State {
-  pizzas: PizzaState;
-  cart: Cart;
-}
+import { Pizza, Cart, PizzaState } from '../../helpers';
 
 // Secondary state objects
 export const initialPizzaState: PizzaState = {
@@ -31,13 +20,6 @@ export const initialCartState: Cart = {
   totalOrders: 0,
   records: [],
   items: [],
-};
-// END
-
-// Main store object
-export const initialState: State = {
-  pizzas: initialPizzaState,
-  cart: initialCartState,
 };
 // END
 

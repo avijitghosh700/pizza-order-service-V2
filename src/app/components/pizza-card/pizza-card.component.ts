@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Currency, ICurrency, Pizza } from 'src/app/helpers';
-import { State } from 'src/app/store';
+
 import * as fromReduders from 'src/app/store/reducers';
+
+import { Currency, CurrencyModel, Pizza, State } from 'src/app/helpers';
 
 @Component({
   selector: 'app-pizza-card',
@@ -12,7 +13,7 @@ import * as fromReduders from 'src/app/store/reducers';
 export class PizzaCardComponent implements OnInit {
   @Input('pizza-data') pizza: Pizza | null = null;
 
-  public currency: ICurrency = {
+  public currency: CurrencyModel = {
     inr: Currency.india,
     usd: Currency.usa,
   }

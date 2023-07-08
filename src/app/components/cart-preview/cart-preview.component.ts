@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Cart, Pizza } from 'src/app/helpers';
-import { State } from 'src/app/store';
+
 import * as fromReducers from 'src/app/store/reducers';
+
+import { Cart, Pizza, State } from 'src/app/helpers';
 
 @Component({
   selector: 'app-cart-preview',

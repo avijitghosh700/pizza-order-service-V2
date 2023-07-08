@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { State } from 'src/app/store';
+
 import * as fromReducers from 'src/app/store/reducers';
+
+import { State } from 'src/app/helpers';
 
 @Injectable({
   providedIn: 'root',

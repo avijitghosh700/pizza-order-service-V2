@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Pizza } from 'src/app/helpers';
-import { loadPizzas, PizzaState, State } from 'src/app/store';
+import { loadPizzas } from 'src/app/store';
 import * as fromReduders from 'src/app/store/reducers';
+
+import { Pizza, PizzaState, State } from 'src/app/helpers';
 
 @Component({
   selector: 'app-pizzas',

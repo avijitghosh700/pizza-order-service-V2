@@ -1,7 +1,9 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Pizza } from 'src/app/helpers';
-import { addToCart, removeFromCart, State } from 'src/app/store';
+
+import { addToCart, removeFromCart } from 'src/app/store';
+
+import { Pizza, State } from 'src/app/helpers';
 
 @Component({
   selector: 'app-qty-selector',
